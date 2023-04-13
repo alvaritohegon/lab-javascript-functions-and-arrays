@@ -1,38 +1,86 @@
 // Iteration #1: Find the maximum
-function maxOfTwoNumbers() {}
+function maxOfTwoNumbers(number1, number2) {
+  if (number1 > number2) {
+    return number1;
+  } else if (number1 < number2) {
+    return number2;
+  } else {
+    return number1;
+  }
+}
 
-
+// maxOfTwoNumbers(3, 4);
+// maxOfTwoNumbers(4, 3);
+// maxOfTwoNumbers(4, 4);
+console.log(1, 2)
 
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
-function findLongestWord() {}
+function findLongestWord(arr) {
+  let longestWord = arr[0]; //inicializo en la primera palabra del array
+  for (let i = 1; i < arr.length; i++) { 
+    if (arr[i].length > longestWord.length) { 
+      longestWord = arr[i]; 
+    } 
+  }
+  if (arr.length === 0) {
+    return null;
+  }
+  return longestWord;
+}
 
-
+console.log(findLongestWord(words)); 
+//*para probar con otro array diferente
+console.log(findLongestWord(["Jesse", "Saul", "Gus", "Walter"]))
 
 // Iteration #3: Calculate the sum
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(arr) {
+  let total = 0;
+  for (let i = 0; i < arr.length; i++) {
+    total += arr[i];
+  }
+  return total;
+}
 
-
+console.log(sumNumbers(numbers))
+console.log(sumNumbers([]))
 
 // Iteration #3.1 Bonus:
 function sum() {}
-
-
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
-
+function averageNumbers(arr) {
+  const sum = sumNumbers(arr);
+  const average = sum / arr.length;
+  if (arr.length === 0) {
+    return null;
+  }
+  return average;
+}
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
 
-function averageWordLength() { }
+function averageWordLength(arr) {
+  let totalLength = 0;
+  for (let i = 0; i < arr.length; i++) {
+    totalLength += arr[i].length;
+  }
+  const averageLength = totalLength / arr.length;
+  if (arr.length === 0) {
+    return null;
+  }
+  return averageLength;
+}
+
+console.log(averageWordLength(wordsArr))
+console.log(averageWordLength(["nico", "lola"]))
 
 // Bonus - Iteration #4.1
 function avg() {}
@@ -52,16 +100,49 @@ const wordsUnique = [
   'bring'
 ];
 
-function uniquifyArray() {}
+function uniquifyArray(arr) {
+  const uniqueWords = [];
+  for (let i = 0; i < arr.length; i++) {
+    const word = arr[i];
+    if (uniqueWords.indexOf(word) === false) {
+      uniqueWords.push(word);
+    }
+  }
+  if (arr.length === 0) {
+    return null;
+  }
+  return uniqueWords;
+}
 
-
+console.log(uniquifyArray(wordsUnique))
+console.log(uniquifyArray(["nike", "adidas", "puma", "gucci", "adidas"]))
 
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
 
-function doesWordExist() {}
+function doesWordExist(arrOfWords, wordToSearch) {
+  for (let i = 0; i < arrOfWords.length; i++) {
+    const word = arrOfWords[i];
+    if (word === wordToSearch) {
+      return true;
+    } 
+  }
+  if (arrOfWords.length === 0) {
+    return null;
+  }
+  return false;
+}
 
+console.log(doesWordExist(wordsFind), 'trouble') 
+console.log(doesWordExist(["Nadal", "Federer", "Djokovic"]), "Messi")
 
+/*
+aunque en jasmine me pone que está bien,
+en la consola siempre me da falso,
+supongo que lo debería de hacer de otra manera
+porque por lo que veo el return del final
+anula el loop, o que esté mal el loop..
+*/
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -78,9 +159,19 @@ const wordsCount = [
   'matter'
 ];
 
-function howManyTimes() {}
+function howManyTimes(arrOfWords, wordToSearch) {
+  let count = 0;
+  for (let i = 0; i < arrOfWords.length; i++) {
+    const word = arrOfWords[i];
+    if (word === wordToSearch) {
+      count++;
+    } 
+  }
+  return count;
+}
 
-
+console.log(howManyTimes(wordsCount, "matter"))
+console.log(howManyTimes(["ali", "oli", "ali", "ali"], "ali"))
 
 // Iteration #8: Bonus
 const matrix = [
